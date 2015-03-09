@@ -15,3 +15,14 @@ User.create!(name: "Vuong Hung", email: "vuonghung@gmail.com",
   password = "password"
   User.create!(name: name, email: email, password: password, password_confirmation: password)
 end
+
+users = User.all
+user = users.first
+following = users[2..50]
+followers = users[3..40]
+following.each do |followed|
+  user.follow(followed)
+end
+followers.each do |follower|
+  follower.follow(user)
+end
