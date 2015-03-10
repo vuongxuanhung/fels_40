@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150309012741) do
+ActiveRecord::Schema.define(version: 20150309090854) do
+
+  create_table "answers", force: true do |t|
+    t.string   "content"
+    t.integer  "word_id"
+    t.boolean  "correct"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "answers", ["word_id", "created_at"], name: "index_answers_on_word_id_and_created_at", using: :btree
+  add_index "answers", ["word_id"], name: "index_answers_on_word_id", using: :btree
+
+  create_table "lessons", force: true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"
@@ -35,5 +52,15 @@ ActiveRecord::Schema.define(version: 20150309012741) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+
+  create_table "words", force: true do |t|
+    t.string   "content"
+    t.integer  "lesson_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "words", ["lesson_id", "created_at"], name: "index_words_on_lesson_id_and_created_at", using: :btree
+  add_index "words", ["lesson_id"], name: "index_words_on_lesson_id", using: :btree
 
 end

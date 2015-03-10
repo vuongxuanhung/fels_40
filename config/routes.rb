@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resource :followers, only: [:show]
   end
   resources :relationships, only: [:create, :destroy]
+  resources :lessons
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
