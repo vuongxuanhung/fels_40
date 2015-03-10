@@ -1,0 +1,20 @@
+<% provide(:title,"Lesson") %>
+<div class="row">
+  <div class="col-md-4">
+    <h1>Lesson</h1>
+    <p>
+      <strong>Name:</strong>
+      <%= @lesson.title %>
+    </p>
+    <ul>
+      <% @lesson.words.each do |w| %>
+        <li><%= w.content %></li>
+        <ul>
+          <% w.answers.each do |a| %>
+            <li><%= a.content %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="fields">
+  <%= f.label :content, "Word" %>
+  <%= f.hidden_field :_destroy %>
+  <%= link_to "", "#", onclick: "remove_fields(this)", class: "glyphicon glyphicon-trash" %>
+  <%= f.text_field :content, class: "form-control" %>
+
+  <%= f.fields_for :answers do |builder| %>
+    <%= render 'answer_fields', f: builder %>
+  <% end %>
+</div>

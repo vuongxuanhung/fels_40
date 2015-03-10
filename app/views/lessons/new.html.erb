@@ -1,0 +1,20 @@
+<% provide(:title,"Create new lesson") %>
+
+<div class="row" >
+  <div class="col-md-6 col-md-offset-3">
+    <h1>Create new Lesson</h1>
+    <%= form_for(@lesson) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control" %>
+
+      <%= f.fields_for(:words) do |builder| %>
+        <%= render 'word_fields', f: builder %>
+      <% end %>
+
+      <p><%= create_add_word_button "Add Word", f, :words %></p>
+
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
