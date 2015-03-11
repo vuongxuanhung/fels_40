@@ -1,6 +1,9 @@
 class LessonsController < ApplicationController
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :is_admin
+
   def index
-    @lessons = Lesson.all
+    @lessons = Lesson.paginate page: params[:page], per_page: 8
   end
 
   def show
@@ -48,6 +51,10 @@ class LessonsController < ApplicationController
 
   private
   def lesson_params
-    params.require(:lesson).permit :title, words_attributes: [:id, :content, :_destroy, answers_attributes: [:id, :content, :_destroy]]
+    params.require(:lesson).permit :title, words_attributes: [:id, :content, :_destroy, answers_attributes: [:id, :content, :correct, :_destroy]]
+  end
+
+  def is_admin
+    redirect_to root_url unless current_user.admin?
   end
 end

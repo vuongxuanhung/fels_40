@@ -21,10 +21,13 @@ function remove_fields(link) {
   $(link).parent().hide();
 }
 
-function add_fields(link, name) {
+function add_fields(link, association, name) {
   var new_id = new Date().getTime();
-  var r = /\d+/g;
-  var m = r.exec(name);
-  var re = new RegExp(m, 'g');
-  $(link).parent().prev().append(name.replace(re,new_id));
+  var re = new RegExp("new_" + association, 'g');
+  $(link).parent().prev().append(name.replace(re, new_id));
+}
+
+function check(checkbox){
+    $(checkbox).closest(".answers").find("input[type='checkbox']").not(this).prop("checked", false);
+    $(checkbox).prop("checked", true)
 }
