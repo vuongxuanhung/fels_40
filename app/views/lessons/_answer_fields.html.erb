@@ -1,6 +1,11 @@
-<p class="answer">
+<div class="answer">
   <%= f.label :content, "Answer" %>
+  <%= f.hidden_field :_destroy %>
+  <%= link_to "", "#", onclick: "remove_fields(this)", class: "glyphicon glyphicon-trash" %>
+
+  <%= f.label :correct, class: "checkbox" do %>
+    <%= f.check_box :correct, onchange: "check(this)" %>
+  <% end %>
   <%= f.text_field :content, class: "form-control" %>
 
-  <%= f.hidden_field :_destroy %>
-</p>
+</div>

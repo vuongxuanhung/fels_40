@@ -4,14 +4,21 @@
     <h1>Lesson</h1>
     <p>
       <strong>Name:</strong>
-      <%= @lesson.title %>
+      <%= @lesson.title %> &nbsp
+      <%= link_to "", edit_lesson_path(@lesson), class: "glyphicon glyphicon-edit" %> &nbsp
+      <%= link_to "", @lesson, method: :delete, class: "glyphicon glyphicon-trash" %>
     </p>
     <ul>
       <% @lesson.words.each do |w| %>
         <li><%= w.content %></li>
         <ul>
           <% w.answers.each do |a| %>
-            <li><%= a.content %></li>
+            <li>
+              <%= a.content %>
+              <% if a.correct? %>
+                <span class="glyphicon glyphicon-ok"></span>
+              <% end %>
+            </li>
           <% end %>
         </ul>
       <% end %>

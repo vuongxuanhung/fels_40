@@ -214,10 +214,20 @@ aside {
   padding: 0;
 }
 
-.answer{
-  margin-left: 30px;
-}
-
 .glyphicon-remove{
   position: relative;
+}
+
+.answer{
+  margin-left: 50px;
+}
+
+.answer input{
+  width: 70%;
+}
+
+.answer input[type="checkbox"] {
+  position: absolute;
+  margin-left: 195px;
+  margin-top: 20px;
 }
