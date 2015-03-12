@@ -4,8 +4,8 @@ module LessonsHelper
 
     4.times {new_object.answers.build}
 
-    fields = f.fields_for words, new_object do |builder|
-      render "word_fields", f: builder
+    fields = f.fields_for words, new_object, child_index: "new_#{words}" do |builder|
+      render words.to_s.singularize + "_fields", f: builder
     end
 
     link_to(name, "javascript:void(0);",
@@ -14,6 +14,7 @@ module LessonsHelper
 
   def create_add_answer_button name, f, answers
     new_object = f.object.class.reflect_on_association(answers).klass.new
+
     fields = f.fields_for answers, new_object, child_index: "new_#{answers}" do |builder|
       render answers.to_s.singularize + "_fields", f: builder
     end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150309090854) do
+ActiveRecord::Schema.define(version: 20150312025100) do
 
   create_table "answers", force: true do |t|
     t.string   "content"
@@ -24,11 +24,21 @@ ActiveRecord::Schema.define(version: 20150309090854) do
   add_index "answers", ["word_id", "created_at"], name: "index_answers_on_word_id_and_created_at", using: :btree
   add_index "answers", ["word_id"], name: "index_answers_on_word_id", using: :btree
 
-  create_table "lessons", force: true do |t|
+  create_table "categories", force: true do |t|
     t.string   "title"
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "lessons", force: true do |t|
+    t.string   "title"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "lessons", ["category_id"], name: "index_lessons_on_category_id", using: :btree
 
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"
