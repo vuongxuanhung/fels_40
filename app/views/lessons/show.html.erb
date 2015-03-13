@@ -3,10 +3,13 @@
   <div class="col-md-4">
     <h1>Lesson</h1>
     <p>
+      <b>Category title:</b> <%= link_to @category.title, @category %>
+    </p>
+    <p>
       <strong>Name:</strong>
       <%= @lesson.title %> &nbsp
-      <%= link_to "", edit_lesson_path(@lesson), class: "glyphicon glyphicon-edit" %> &nbsp
-      <%= link_to "", @lesson, method: :delete, class: "glyphicon glyphicon-trash" %>
+      <%= link_to "", edit_category_lesson_path(@category, @lesson), class: "glyphicon glyphicon-edit" %> &nbsp
+      <%= link_to "", category_lesson_path(@category, @lesson) , method: :delete, data: {confirm: "Are you sure?"}, class: "glyphicon glyphicon-trash" %>
     </p>
     <ul>
       <% @lesson.words.each do |w| %>

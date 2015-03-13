@@ -1,0 +1,57 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Lesson title</th>
+      <th>Word</th>
+      <th>Answer</th>
+      <th>Modified</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% category.lessons.each do |l| %>
+      <% words_count = l.words.count %>
+      <tr>
+        <td rowspan="<%= words_count %>"><%= l.id %></td>
+        <td rowspan="<%= words_count %>"><%= l.title %></td>
+        <td><%= l.words.first.content %></td>
+        <td>
+          <ol>
+            <% l.words.first.answers.each do |a| %>
+              <li>
+                <%= a.content %>
+                <% if a.correct? %>
+                  <span class="glyphicon glyphicon-ok"></span>
+                <% end %>
+              </li>
+            <% end %>
+          </ol>
+        </td>
+        <td rowspan="<%= words_count %>">
+          <%= link_to "", category_lesson_path(category, l), class: "glyphicon glyphicon-eye-open" %> &nbsp
+          <%= link_to "", edit_category_lesson_path(category, l), class: "glyphicon glyphicon-edit" %> &nbsp
+          <%= link_to "", category_lesson_path(category, l), method: :delete, data: {confirm: "Are you sure?"}, class: "glyphicon glyphicon-trash" %>
+        </td>
+        <% l.words.each do |w| %>
+          <% unless w == l.words.first %>
+            <tr>
+              <td><%= w.content %></td>
+              <td>
+                <ol>
+                  <% w.answers.each do |a| %>
+                    <li>
+                      <%= a.content %>
+                      <% if a.correct? %>
+                        <span class="glyphicon glyphicon-ok"></span>
+                      <% end %>
+                    </li>
+                  <% end %>
+                </ol>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

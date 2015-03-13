@@ -1,0 +1,17 @@
+<% provide(:title,"Edit this category") %>
+
+<div class="row" >
+  <div class="col-md-6 col-md-offset-3">
+    <h1>Edit this category</h1>
+    <%= form_for @category do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control" %>
+
+      <%= f.label :content %>
+      <%= f.text_area :content, class: "form-control" %>
+
+      <%= f.submit "Save changes", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

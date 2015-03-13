@@ -10,5 +10,17 @@
     <% end %>
   </div>
 
-  <p><%= create_add_answer_button "Add Answer", f, :answers %></p>
+  <p class="add_answer"><%= create_add_answer_button "Add Answer", f, :answers%></p>
 </div>
+
+<script>
+  $(function(){
+    $(".answers").each(function(){
+      var boxes = $(this).find("input[type='checkbox']:checked");
+      if(boxes.length == 0){
+        $(this).find("input[type='checkbox']:first").prop("checked", true)
+      }
+    });
+  });
+</script>
+
