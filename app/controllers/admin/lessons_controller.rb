@@ -1,9 +1,8 @@
-class LessonsController < ApplicationController
+class Admin::LessonsController < ApplicationController
   before_action :logged_in_user
   before_action :is_admin
 
   def index
-    @lessons = Lesson.paginate page: params[:page], per_page: 8
   end
 
   def show
@@ -23,7 +22,7 @@ class LessonsController < ApplicationController
     @lesson = @category.lessons.build lesson_params
     if @category.save
       flash[:success] = "Lesson created"
-      redirect_to @category
+      redirect_to admin_category_url @category
     else
       word = @lesson.words.build
       4.times {word.answers.build}
@@ -41,7 +40,7 @@ class LessonsController < ApplicationController
     @lesson = Lesson.find params[:id]
     if @lesson.update_attributes lesson_params
       flash[:success] = "Lesson updated"
-      redirect_to category_lesson_url @category, @lesson
+      redirect_to admin_category_lesson_url @category, @lesson
     else
       render 'edit'
     end
@@ -51,7 +50,7 @@ class LessonsController < ApplicationController
     category = Category.find params[:category_id]
     Lesson.find(params[:id]).destroy
     flash[:success] = "Lesson deleted"
-    redirect_to category
+    redirect_to admin_category_url category
   end
 
   private

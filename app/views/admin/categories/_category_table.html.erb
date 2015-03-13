@@ -14,9 +14,9 @@
         <td><%= cat.title %></td>
         <td><%= cat.content %></td>
         <td>
-          <%= link_to "", cat, class: "glyphicon glyphicon-eye-open" %> &nbsp
-          <%= link_to "", edit_category_path(cat), class: "glyphicon glyphicon-edit" %> &nbsp
-          <%= link_to "", cat, method: :delete, data: {confirm: "Are you sure?"}, class: "glyphicon glyphicon-trash" %>
+          <%= link_to "", admin_category_path(cat), class: "glyphicon glyphicon-eye-open" %> &nbsp
+          <%= link_to "", edit_admin_category_path(cat), class: "glyphicon glyphicon-edit" %> &nbsp
+          <%= link_to "", admin_category_path(cat), method: :delete, data: {confirm: "Are you sure?"}, class: "glyphicon glyphicon-trash" %>
         </td>
       </tr>
     <% end %>

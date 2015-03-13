@@ -9,7 +9,7 @@
     </tr>
   </thead>
   <tbody>
-    <% category.lessons.each do |l| %>
+    <% lessons.each do |l| %>
       <% words_count = l.words.count %>
       <tr>
         <td rowspan="<%= words_count %>"><%= l.id %></td>
@@ -28,9 +28,9 @@
           </ol>
         </td>
         <td rowspan="<%= words_count %>">
-          <%= link_to "", category_lesson_path(category, l), class: "glyphicon glyphicon-eye-open" %> &nbsp
-          <%= link_to "", edit_category_lesson_path(category, l), class: "glyphicon glyphicon-edit" %> &nbsp
-          <%= link_to "", category_lesson_path(category, l), method: :delete, data: {confirm: "Are you sure?"}, class: "glyphicon glyphicon-trash" %>
+          <%= link_to "", admin_category_lesson_path(category, l), class: "glyphicon glyphicon-eye-open" %> &nbsp
+          <%= link_to "", edit_admin_category_lesson_path(category, l), class: "glyphicon glyphicon-edit" %> &nbsp
+          <%= link_to "", admin_category_lesson_path(category, l), method: :delete, data: {confirm: "Are you sure?"}, class: "glyphicon glyphicon-trash" %>
         </td>
         <% l.words.each do |w| %>
           <% unless w == l.words.first %>

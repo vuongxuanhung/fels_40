@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, length: {minimum: 6}, allow_blank: true
 
+  scope :not_current_user, ->(user){where.not id: user}
+
   def create_digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
       BCrypt::Password.create(string, cost: cost)

@@ -36,7 +36,7 @@ end
 categories = Category.all
 categories.each {
   |category|
-  3.times do |n|
+  10.times do |n|
     lesson_titlte = "Lesson #{n+1}"
     category.lessons.create! title: lesson_titlte
   end

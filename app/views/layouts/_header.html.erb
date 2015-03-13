@@ -6,15 +6,19 @@
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "Help", help_path %></li>
         <% if logged_in? %>
-          <li><%= link_to "Users", users_path %></li>
+          <% if current_user.admin? %>
+            <li><%= link_to "Users", admin_users_path %></li>
+          <% else %>
+            <li><%= link_to "Users", users_path %></li>
+          <% end %>
           <% if current_user.admin? %>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 Categories <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li><%= link_to "Create", new_category_path %></li>
-                <li><%= link_to "List", categories_path %></li>
+                <li><%= link_to "Create", new_admin_category_path %></li>
+                <li><%= link_to "List", admin_categories_path %></li>
               </ul>
             </li>
           <% end %>
