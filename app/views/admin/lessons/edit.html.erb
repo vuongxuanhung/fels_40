@@ -3,7 +3,7 @@
 <div class="row" >
   <div class="col-md-6 col-md-offset-3">
     <h1>Edit this lesson</h1>
-    <%= form_for [@category, @lesson] do |f| %>
+    <%= form_for [:admin, @category, @lesson] do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       <%= f.label :title %>
       <%= f.text_field :title, class: "form-control" %>
