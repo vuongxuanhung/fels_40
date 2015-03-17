@@ -37,17 +37,8 @@ categories = Category.all
 categories.each {
   |category|
   10.times do |n|
-    lesson_titlte = "Lesson #{n+1}"
-    category.lessons.create! title: lesson_titlte
-  end
-}
-
-lessons = Lesson.all
-lessons.each {
-  |lesson|
-  2.times do |n|
-    word_content = "Word #{lesson.id}.#{n+1}"
-    lesson.words.create! content: word_content
+    word_content = "Word #{n+1}"
+    category.words.create! content: word_content
   end
 }
 
@@ -55,7 +46,7 @@ words = Word.all
 words.each {
   |word|
   4.times do |n|
-    answer_content = "Answer #{word.lesson_id}.#{word.id}.#{n+1}"
+    answer_content = "Answer #{word.category_id}.#{word.id}.#{n+1}"
     if n == 1
       word.answers.create! content: answer_content, correct: true
     else
@@ -63,4 +54,3 @@ words.each {
     end
   end
 }
-

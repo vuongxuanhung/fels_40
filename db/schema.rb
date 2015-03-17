@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150312025100) do
+ActiveRecord::Schema.define(version: 20150313095425) do
 
   create_table "answers", force: true do |t|
     t.string   "content"
-    t.integer  "word_id"
     t.boolean  "correct"
+    t.integer  "word_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -32,13 +32,14 @@ ActiveRecord::Schema.define(version: 20150312025100) do
   end
 
   create_table "lessons", force: true do |t|
-    t.string   "title"
+    t.integer  "user_id"
     t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "lessons", ["category_id"], name: "index_lessons_on_category_id", using: :btree
+  add_index "lessons", ["user_id"], name: "index_lessons_on_user_id", using: :btree
 
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"
@@ -50,6 +51,19 @@ ActiveRecord::Schema.define(version: 20150312025100) do
   add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
   add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
+
+  create_table "results", force: true do |t|
+    t.integer  "lesson_id"
+    t.integer  "word_id"
+    t.integer  "answer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "results", ["answer_id"], name: "index_results_on_answer_id", using: :btree
+  add_index "results", ["lesson_id", "word_id", "answer_id"], name: "index_results_on_lesson_id_and_word_id_and_answer_id", using: :btree
+  add_index "results", ["lesson_id"], name: "index_results_on_lesson_id", using: :btree
+  add_index "results", ["word_id"], name: "index_results_on_word_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -65,12 +79,12 @@ ActiveRecord::Schema.define(version: 20150312025100) do
 
   create_table "words", force: true do |t|
     t.string   "content"
-    t.integer  "lesson_id"
+    t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "words", ["lesson_id", "created_at"], name: "index_words_on_lesson_id_and_created_at", using: :btree
-  add_index "words", ["lesson_id"], name: "index_words_on_lesson_id", using: :btree
+  add_index "words", ["category_id", "created_at"], name: "index_words_on_category_id_and_created_at", using: :btree
+  add_index "words", ["category_id"], name: "index_words_on_category_id", using: :btree
 
 end

@@ -4,6 +4,7 @@
       <th>Id</th>
       <th>Title</th>
       <th>Content</th>
+      <th>Number of words</th>
       <th>Modified</th>
     </tr>
   </thead>
@@ -13,6 +14,7 @@
         <td><%= cat.id %></td>
         <td><%= cat.title %></td>
         <td><%= cat.content %></td>
+        <td><%= cat.words.count %></td>
         <td>
           <%= link_to "", admin_category_path(cat), class: "glyphicon glyphicon-eye-open" %> &nbsp
           <%= link_to "", edit_admin_category_path(cat), class: "glyphicon glyphicon-edit" %> &nbsp

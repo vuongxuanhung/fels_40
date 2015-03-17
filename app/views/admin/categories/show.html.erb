@@ -4,7 +4,7 @@
     <div class="col-md-6">
       <h1>Category</h1>
       <p>
-        <strong>Name: &nbsp</strong>
+        <strong>Title: &nbsp</strong>
         <%= @category.title %>
         <%= link_to "", edit_admin_category_path(@category), class: "glyphicon glyphicon-edit" %> &nbsp
         <%= link_to "", admin_category_path(@category) , method: :delete, data: {confirm: "Are you sure?"}, class: "glyphicon glyphicon-trash" %>
@@ -14,13 +14,14 @@
         <%= @category.content %>
       </p>
 
-      <%= link_to "Add lesson", new_admin_category_lesson_path(@category), class:"btn btn-success" %>
+      <%= link_to "Add new word", new_admin_category_word_path(@category), class:"btn btn-success" %>
     </div>
   </div><br>
   <div class="row">
-    <% if @category.lessons.any? %>
-      <%= render 'admin/lessons/lesson_table', category: @category, lessons: @lessons %>
-      <%= will_paginate @lessons %>
+    <% if @category.words.any? %>
+
+      <%= render 'admin/words/word_table', category: @category, words: @words %>
+      <%= will_paginate @words %>
     <% end %>
   </div>
 </div>
