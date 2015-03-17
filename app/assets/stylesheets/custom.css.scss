@@ -252,6 +252,7 @@ aside {
 
 .start{
   float: right;
+  width: 15%;
 }
 
 .home-button{
@@ -260,5 +261,13 @@ aside {
     font-size: 1.8em;
     margin-top: 20px;
     margin-right: 20px;
+  }
+}
+
+.question{
+  .answer{
+    margin-top: 10px;
+    padding: 10px 40px;
+    font-size: 1.1em;
   }
 }

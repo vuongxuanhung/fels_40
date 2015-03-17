@@ -11,6 +11,7 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'carrierwave'
 gem 'cloudinary'
+gem 'prawn'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'

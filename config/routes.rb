@@ -14,7 +14,10 @@ Rails.application.routes.draw do
     resource :followers, only: [:show]
   end
   resources :relationships, only: [:create, :destroy]
-  resources :categories, only: :index
+  resources :categories, only: :index do
+    get 'lessons' => 'lessons#index'
+    post 'lessons' => 'lessons#index'
+  end
 
   get 'words' => 'words#index'
   post 'words' => 'words#index'

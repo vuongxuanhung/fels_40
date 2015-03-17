@@ -1,0 +1,12 @@
+<% provide(:title, "Lesson") %>
+<div class="row">
+  <div class="col-md-4 text-center">
+    <p>
+      <span><h3><%= @category.title %></h3></span>
+      <h4>3/20</h4>
+    </p>
+  </div>
+</div>
+<div class="row question">
+  <%= render 'lessons/question' %>
+</div>

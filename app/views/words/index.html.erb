@@ -1,22 +1,19 @@
 <% provide(:title, "Words list") %>
 <div class="row">
-  <div class="col-md-offset-4">
-    <%= form_tag({controller: 'words', action: 'index'}, class: 'wordlist') do %>
+  <div class="col-md-offset-3">
+    <%= form_tag(words_path, method: :get, class: 'wordlist') do %>
       <h3>Categories:</h3>
-      <BR>
-      <%= select_tag :wordlist, options_for_select(@list_categories), class: 'col-xs-2' %>
-      <%= label_tag :learned, class:'radio-inline' do %>
-        <%= radio_button_tag :filter, 'learned' %> Learned
+      <%= select_tag "filter[category_id]", options_for_select(@categories.collect{|u| [u.title, u.id]}.unshift ['All', 0]), class: 'col-xs-2' %>
+
+      <% ["all", "learned", "not_learned"].each do |item| %>
+        <%= label_tag item, class: 'radio-inline' do %>
+          <%= radio_button_tag "filter[state]", item %> <%= item.titleize %>
+        <% end %>
       <% end %>
-      <%= label_tag :not_learned, class:'radio-inline' do %>
-        <%= radio_button_tag :filter,'not learned' %>Not Learned
-      <% end %>
-      <%= label_tag :all, class:'radio-inline' do %>
-        <%= radio_button_tag :filter,'all', true %>All
-      <% end %>
+
       <div class='button'>
-        <%= submit_tag 'Filter', class: "btn btn-primary btn-default" %>
-        <%= link_to "PDF", '#', class: "btn btn-primary btn-default" %>
+        <%= submit_tag 'Filter', id: "filter",class: "btn btn-primary btn-default" %>
+        <%= link_to "PDF", words_path(format: 'pdf'), class: "btn btn-primary btn-default" %>
       </div>
     <% end %>
   </div>
@@ -24,3 +21,19 @@
     <%= render 'word' %>
   </div>
 </div>
+
+<script>
+$(function(){
+  $('#filter').click(function(){
+    var action = $('.wordlist').attr('action');
+    var formData = $('.wordlist').serialize();
+    $.get(action, formData, null, 'script');
+    history.replaceState(null, "Words", action + "?" + formData);
+    return false;
+  });
+
+  $(window).bind("popstate", function () {
+    $.getScript(location.href);
+  });
+})
+</script>
