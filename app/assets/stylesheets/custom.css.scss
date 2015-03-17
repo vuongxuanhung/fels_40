@@ -218,10 +218,6 @@ aside {
   position: relative;
 }
 
-.word .add_answer{
-  margin-left: 50px;
-}
-
 .answer{
   margin-left: 50px;
 }
@@ -234,4 +230,35 @@ aside {
   position: absolute;
   margin-left: 195px;
   margin-top: 20px;
+}
+
+.wordlist{
+  margin-bottom: 30px;
+  input {
+    width:auto !important;
+    margin-left: 50px;
+  }
+  label{
+    margin-left: 20px;
+  }
+  .button{
+    margin-top: 20px;
+    padding-left: 100px;
+  }
+  a{
+    margin-left: 10px;
+  }
+}
+
+.start{
+  float: right;
+}
+
+.home-button{
+  a{
+    padding: 10px 30px;
+    font-size: 1.8em;
+    margin-top: 20px;
+    margin-right: 20px;
+  }
 }

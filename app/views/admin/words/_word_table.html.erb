@@ -1,0 +1,34 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Word</th>
+      <th>Answer</th>
+      <th>Modified</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% words.each do |w| %>
+      <tr>
+        <td><%= w.id %></td>
+        <td><%= w.content %></td>
+        <td>
+          <ol>
+            <% w.answers.each do |a| %>
+              <li>
+                <%= a.content %>
+                <% if a.correct? %>
+                  <span class="glyphicon glyphicon-ok"></span>
+                <% end %>
+              </li>
+            <% end %>
+          </ol>
+        </td>
+        <td>
+          <%= link_to "", edit_admin_category_word_path(category, w), class: "glyphicon glyphicon-edit" %> &nbsp
+          <%= link_to "", admin_category_word_path(category, w), method: :delete, data: {confirm: "Are you sure?"}, class: "glyphicon glyphicon-trash" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

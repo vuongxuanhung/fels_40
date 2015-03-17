@@ -8,7 +8,7 @@ class Admin::CategoriesController < ApplicationController
 
   def show
     @category = Category.find params[:id]
-    @lessons = @category.lessons.paginate page: params[:page], per_page: 8
+    @words = @category.words.paginate page: params[:page], per_page: 8
   end
 
   def new

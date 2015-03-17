@@ -14,14 +14,15 @@ Rails.application.routes.draw do
     resource :followers, only: [:show]
   end
   resources :relationships, only: [:create, :destroy]
-  resources :categories do
-    resources :lessons
-  end
+  resources :categories, only: :index
+
+  get 'words' => 'words#index'
+  post 'words' => 'words#index'
 
   namespace :admin do
     resources :users
     resources :categories do
-      resources :lessons
+      resources :words, except: [:index, :show]
     end
   end
 

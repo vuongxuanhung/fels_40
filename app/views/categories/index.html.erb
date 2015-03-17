@@ -1,0 +1,15 @@
+<% provide(:title, "Categories") %>
+<div class="row">
+  <div class="col-md-6">
+    <% @categories.each do |f| %>
+      <h3><%= f.title %></h3>
+      <span><i>You've learned 20/500</i></span><br>
+      <p>
+        <%= f.content %>
+      </p>
+      <p><%= link_to "Start", '#', class: "btn btn-success start" %></p>
+    <% end %>
+  </div>
+  <div class="col-md-4">
+  </div>
+</div>

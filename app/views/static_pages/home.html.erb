@@ -12,6 +12,14 @@
         <%= render 'shared/stats' %>
       </section>
     </aside>
+    <div class="col-md-8 home-button">
+      <section>
+        <%= link_to "Words", words_path, class: "btn btn-success btn-lg" %>
+        <%= link_to "Lesson", categories_path, class: "btn btn-success btn-lg" %>
+        <h3>Activities</h3>
+        <hr width="750">
+      </section>
+    </div>
   </div>
 <% else %>
   <div class="center jumbotron">
