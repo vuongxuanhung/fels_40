@@ -20,12 +20,8 @@ users = User.all
 user = users.first
 following = users[2..50]
 followers = users[3..40]
-following.each do |followed|
-  user.follow followed
-end
-followers.each do |follower|
-  follower.follow user
-end
+following.each {|followed| user.follow followed}
+followers.each {|follower| follower.follow user}
 
 2.times do |n|
   category_title = "Category #{n+1}"
@@ -34,17 +30,15 @@ end
 end
 
 categories = Category.all
-categories.each {
-  |category|
+categories.each do |category|
   10.times do |n|
-    word_content = "Word #{n+1}"
+    word_content = "Word #{category.id}.#{n+1}"
     category.words.create! content: word_content
   end
-}
+end
 
 words = Word.all
-words.each {
-  |word|
+words.each do |word|
   4.times do |n|
     answer_content = "Answer #{word.category_id}.#{word.id}.#{n+1}"
     if n == 1
@@ -53,4 +47,14 @@ words.each {
       word.answers.create! content: answer_content
     end
   end
-}
+end
+
+user = User.first
+category = Category.first
+lesson = user.lessons.create!(category_id: category.id)
+category.words.each_with_index do |word, index|
+  answer = word.answers.first
+  lesson.results.create!(word_id: word.id, answer_id: answer.id)
+  if index == 5 then break
+  end
+end

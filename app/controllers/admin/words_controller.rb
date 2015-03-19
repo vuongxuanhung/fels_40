@@ -15,8 +15,7 @@ class Admin::WordsController < ApplicationController
       flash[:success] = "Word created"
       redirect_to admin_category_url @category
     else
-      word = @lesson.words.build
-      4.times {word.answers.build}
+      4.times {@word.answers.build}
       render 'new'
     end
   end

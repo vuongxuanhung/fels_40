@@ -1,0 +1,9 @@
+<div class="col-md-4 col-md-offset-2 text-center">
+  <h1><%= @word.content %></h1>
+  <%= link_to "", '#', class: "glyphicon glyphicon-bullhorn" %>
+</div>
+<div class="col-md-4">
+  <% @word.answers.each do |answer| %>
+    <%= link_to answer.content, '#', class: "btn btn-primary answer" %><br>
+  <% end %>
+</div>
