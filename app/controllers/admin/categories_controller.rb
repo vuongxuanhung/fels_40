@@ -44,6 +44,8 @@ class Admin::CategoriesController < Admin::AdminsController
 
   private
   def category_params
-    params.require(:category).permit :title, :content
+    params.require(:category).permit :title, :content,
+                                  words_attributes: [:id, :content, :_destroy,
+                                  answers_attributes: [:id, :content, :correct, :_destroy]]
   end
 end

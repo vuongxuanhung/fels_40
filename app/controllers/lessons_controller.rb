@@ -15,7 +15,7 @@ class LessonsController < ApplicationController
     @results = []
     20.times do |n|
       @result = @lesson.results.build
-      @result.word_id = words[n].id
+      @result.word = words[n]
       @results << @result
     end
   end

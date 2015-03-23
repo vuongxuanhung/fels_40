@@ -5,18 +5,6 @@ class Admin::WordsController < Admin::AdminsController
     4.times {@word.answers.build}
   end
 
-  def create
-    @category = Category.find params[:category_id]
-    @word = @category.words.build word_params
-    if @category.save
-      flash[:success] = "Word created"
-      redirect_to admin_category_url @category
-    else
-      4.times {@word.answers.build}
-      render 'new'
-    end
-  end
-
   def edit
     @category = Category.find params[:category_id]
     @word = Word.find params[:id]
@@ -43,5 +31,11 @@ class Admin::WordsController < Admin::AdminsController
   private
   def word_params
     params.require(:word).permit :content, answers_attributes: [:id, :content, :correct, :_destroy]
+  end
+
+  def category_params
+    params.require(:category).permit :title,
+                                  words_attributes: [:id, :content, :_destroy,
+                                  answers_attributes: [:id, :content, :correct, :_destroy]]
   end
 end

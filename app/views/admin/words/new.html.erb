@@ -6,18 +6,16 @@
     <p>
       <b>Category title:</b> <%= link_to @category.title, admin_category_path(@category) %>
     </p>
-    <%= form_for [:admin, @category, @word] do |f|%>
+    <%= form_for [:admin, @category] do |f|%>
       <%= render 'shared/error_messages', object: f.object %>
-      <%= f.label :content %>
-      <%= f.text_field :content, class: "form-control" %>
 
-      <div class="answers">
-        <%= f.fields_for :answers do |builder| %>
-          <%= render 'answer_fields', f: builder %>
+      <div class="words">
+        <%= f.fields_for :words do |builder| %>
+          <%= render 'word_fields', f: builder %>
         <% end %>
       </div>
 
-      <p class="answer"><%= create_add_answer_button "Add answer", f, :answers %></p>
+      <p><%= create_add_word_button "Add Word", f, :words %></p>
 
       <%= f.submit "Submit", class: "btn btn-primary" %>
     <% end %>
@@ -26,11 +24,10 @@
 
 <script>
   $(function(){
-    $(".answers").each(function(){
-      var boxes = $(this).find("input[type='checkbox']:checked");
-      if(boxes.length == 0){
-        $(this).find("input[type='checkbox']:first").prop("checked", true)
+    $("input.word_content").each(function(){
+      if($(this).val() != ""){
+        $(this).parent(".word").hide();
       }
     });
-  });
+  })
 </script>

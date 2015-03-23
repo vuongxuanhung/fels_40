@@ -1,4 +1,4 @@
-<section id="word-<%= f.options[:child_index] %>" class="<%= 'hidden' if f.options[:child_index] > 0 %>">
+<section id="word-<%= f.options[:child_index] %>" class="result <%= 'hidden' if f.options[:child_index] > 0 %>">
   <span class="counter"><%= f.options[:child_index]+1 %>/20</span>
   <div class="question">
     <div class="col-md-4 col-md-offset-2 text-center">
@@ -24,5 +24,15 @@
     </div>
   </div>
 </section>
-
-
+<script>
+  $(function(){
+    var te = $('#word-<%= f.options[:child_index] %>');
+    var checked = te.find("input[type='radio']:checked").length;
+    if(checked == 0){
+      te.find('.glyphicon-arrow-right').attr('disabled', true);
+    }
+    te.find('.answer').click(function(){
+      te.find('.glyphicon-arrow-right').attr('disabled', false);
+    });
+  })
+</script>
