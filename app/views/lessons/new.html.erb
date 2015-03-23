@@ -1,0 +1,42 @@
+<% provide(:title, "New lesson") %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <p>
+        <span><h3><%= @category.title %></h3></span>
+      </p>
+    </div>
+  </div>
+  <div class="row" id="lesson">
+    <%= form_for [@category, @lesson] do |f| %>
+      <%= f.fields_for :results do |builder| %>
+        <%= render 'result', f: builder %>
+      <% end %>
+      <%= f.hidden_field :correct_answers, id: "correct_answers" %>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  $(function(){
+    var $num = 0;
+    $('.answer').click(function(){
+      $(this).next().attr('checked','true');
+      if($(this).attr('correct')=='true'){
+        $(this).removeClass('btn-primary');
+        $(this).addClass('btn-success');
+        $num++;
+        $('#correct_answers').val($num);
+      }else{
+        $(this).removeClass('btn-primary');
+        $(this).addClass('btn-danger');
+        var bt = $(this).parent().find("button[correct='true']");
+        setTimeout(function(){
+          bt.removeClass('btn-primary');
+          bt.addClass('btn-success')
+        },300)
+      }
+      $(this).parent().find("button").attr('disabled', 'disabled')
+    })
+  })
+</script>

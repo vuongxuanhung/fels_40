@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20150313095425) do
   create_table "lessons", force: true do |t|
     t.integer  "user_id"
     t.integer  "category_id"
+    t.integer  "correct_answers"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

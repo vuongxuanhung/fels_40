@@ -17,10 +17,7 @@
         <%= link_to "Words", words_path, class: "btn btn-success btn-lg" %>
         <%= link_to "Lesson", categories_path, class: "btn btn-success btn-lg" %>
         <h3>Activities</h3>
-        <ul class="activities">
-          <%= render @lessons %>
-        </ul>
-        <%= will_paginate @lessons %>
+
       </section>
     </div>
   </div>

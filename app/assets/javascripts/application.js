@@ -28,6 +28,11 @@ function add_fields(link, association, name) {
 }
 
 function check(checkbox){
-    $(checkbox).closest(".answers").find("input[type='checkbox']").not(this).prop("checked", false);
-    $(checkbox).prop("checked", true)
+  $(checkbox).closest(".answers").find("input[type='checkbox']").not(this).prop("checked", false);
+  $(checkbox).prop("checked", true)
+}
+
+function next_word(i){
+  $('#word-'+i).attr('class','hidden');
+  $('#word-'+(i+1)).attr('class','');
 }

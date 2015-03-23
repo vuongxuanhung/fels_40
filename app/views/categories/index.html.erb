@@ -1,15 +1,19 @@
 <% provide(:title, "Categories") %>
 <div class="row">
   <div class="col-md-6">
-    <% @categories.each do |category| %>
-      <h3><%= category.title %></h3>
-      <span><i>You've learned 20/500</i></span><br>
-      <p>
-        <%= category.content %>
-      </p>
-      <%= form_tag(category_lessons_path(category)) do %>
-        <%= submit_tag "Start", class: "btn btn-success start"  %>
+    <ul class="categories">
+      <% @categories.each do |category| %>
+        <li>
+          <h3><%= category.title %></h3>
+          <span><i><%= "You've learned #{category.words.learned(current_user).count}/#{category.words.count}" %></i></span><br>
+          <p>
+            <%= category.content %>
+          </p>
+          <%= form_tag new_category_lesson_path(category), method: :get do %>
+            <%= submit_tag "Start", class: "btn btn-success start"  %>
+          <% end %>
+        </li>
       <% end %>
-    <% end %>
+    </ul>
   </div>
 </div>

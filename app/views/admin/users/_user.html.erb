@@ -1,7 +1,6 @@
 <li>
   <%= gravatar_for user, size: 50 %>
   <%= link_to user.name, user %>
-  <% unless current_user?(user) %>
-    <%= link_to "", admin_user_path(user), method: :delete, data: {confirm: "Are you sure"}, class: "glyphicon glyphicon-trash" %>
-  <% end %>
+  <%= link_to "", admin_user_path(user), method: :delete, data: {confirm: "Are you sure"}, class: "glyphicon glyphicon-trash" %>
+  <%= link_to "", edit_admin_user_path(user), class: "glyphicon glyphicon-edit" %>
 </li>

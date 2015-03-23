@@ -1,7 +1,4 @@
-class Admin::WordsController < ApplicationController
-  before_action :logged_in_user
-  before_action :is_admin
-
+class Admin::WordsController < Admin::AdminsController
   def new
     @category = Category.find params[:category_id]
     @word = @category.words.build

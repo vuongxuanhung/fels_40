@@ -250,13 +250,8 @@ aside {
   }
 }
 
-.start{
-  float: right;
-  width: 15%;
-}
-
 .home-button{
-  a{
+  .btn-lg{
     padding: 10px 30px;
     font-size: 1.8em;
     margin-top: 20px;
@@ -264,10 +259,79 @@ aside {
   }
 }
 
-.question{
+.categories{
+  li{
+    list-style: none;
+    margin-bottom: 50px;
+  }
+}
+
+.start{
+  float: right;
+  width: 15%;
+}
+
+#lesson{
   .answer{
     margin-top: 10px;
     padding: 10px 40px;
     font-size: 1.1em;
+  }
+  input[type="submit"]{
+    margin-top: 30px;
+  }
+}
+
+.counter{
+  position: absolute;
+  margin-left: 265px;
+  margin-top: -35px;
+  font-size: 1.4em;
+}
+
+.question{
+  h1{
+    margin-top: 90px;
+  }
+  .glyphicon-arrow-right{
+    margin-top: 20px;
+  }
+  .next{
+    padding-top: 155px;
+  }
+  .radio_answer{
+    display: none;
+  }
+  .answer{
+    width: 200px;
+  }
+}
+
+#result{
+  table{
+    margin-top: 30px;
+    tbody tr td, thead tr th{
+      border: none;
+    }
+  }
+  .counter{
+    margin-left: 150px;
+  }
+}
+
+.activities{
+  list-style: none;
+  padding: 0;
+  li {
+    margin-top: 30px;
+    padding: 10px 0;
+    border-top: 1px solid #E7DDDD;
+  }
+  .user{
+
+  }
+  .content{
+    display:block;
+    margin-left: 20px;
   }
 }
