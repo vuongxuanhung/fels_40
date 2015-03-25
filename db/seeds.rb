@@ -31,7 +31,7 @@ end
 
 categories = Category.all
 categories.each do |category|
-  10.times do |n|
+  40.times do |n|
     word_content = "Word #{category.id}.#{n+1}"
     category.words.create! content: word_content
   end
@@ -49,12 +49,14 @@ words.each do |word|
   end
 end
 
-user = User.first
-category = Category.first
-lesson = user.lessons.create!(category_id: category.id)
-category.words.each_with_index do |word, index|
-  answer = word.answers.first
-  lesson.results.create!(word_id: word.id, answer_id: answer.id)
-  if index == 5 then break
+users = User.take 6
+users.each do |user|
+  category = Category.first
+  lesson = user.lessons.create! category_id: category.id, correct_answers: 0
+  category.words.each_with_index do |word, index|
+    answer = word.answers.first
+    lesson.results.create! word_id: word.id, answer_id: answer.id
+    if index == 19 then break
+    end
   end
 end

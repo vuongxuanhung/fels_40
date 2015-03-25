@@ -15,14 +15,13 @@ Rails.application.routes.draw do
   end
   resources :relationships, only: [:create, :destroy]
   resources :categories, only: :index do
-    get 'lessons' => 'lessons#index'
-    post 'lessons' => 'lessons#index'
+    resources :lessons
   end
 
-  get 'words' => 'words#index'
-  post 'words' => 'words#index'
+  resources :words, only: [:index]
 
   namespace :admin do
+    root 'dashboards#home'
     resources :users
     resources :categories do
       resources :words, except: [:index, :show]

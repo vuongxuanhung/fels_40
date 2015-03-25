@@ -1,7 +1,7 @@
 <% provide(:title, "Words list") %>
 <div class="row">
   <div class="col-md-offset-3">
-    <%= form_tag(words_path, method: :get, class: 'wordlist') do %>
+    <%= form_tag words_path, method: :get, remote: true, class: 'wordlist' do %>
       <h3>Categories:</h3>
       <%= select_tag "filter[category_id]", options_for_select(@categories.collect{|u| [u.title, u.id]}.unshift ['All', 0]), class: 'col-xs-2' %>
 

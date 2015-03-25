@@ -13,5 +13,12 @@
   </aside>
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>
+    <% if @user.lessons.any? %>
+      <h3>Activities</h3>
+      <ul class="activities">
+        <%= render @lessons %>
+      </ul>
+      <%= will_paginate @lessons %>
+    <% end %>
   </div>
 </div>

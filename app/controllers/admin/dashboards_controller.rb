@@ -1,4 +1,4 @@
-class StaticPagesController < ApplicationController
+class Admin::DashboardsController < Admin::AdminsController
   def home
     if logged_in?
       @lessons = Lesson.feed(current_user)

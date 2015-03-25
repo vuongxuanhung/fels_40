@@ -1,0 +1,41 @@
+<% provide(:title, "Lesson") %>
+<div class="container" id="result">
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <p>
+        <span><h3><%= @category.title %> Result</h3></span>
+        <span class="counter"><%= "#{@lesson.correct_answers}/20" %></span>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Word</th>
+            <th>Your chosen</th>
+            <th>Answer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @lesson.results.each do |result| %>
+            <tr>
+              <td>
+                <% if result.answer_id == result.word.answers.correct.id %>
+                  <span class="glyphicon glyphicon-ok"></span>
+                <% else %>
+                  <span class="glyphicon glyphicon-remove"></span>
+                <% end %>
+              </td>
+              <td><%= result.word.content %></td>
+              <td><%= result.answer.content %></td>
+              <td><%= result.word.answers.correct.content %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
