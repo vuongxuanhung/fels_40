@@ -12,11 +12,9 @@ class LessonsController < ApplicationController
       redirect_to categories_url
       return
     end
-    @results = []
     20.times do |n|
       @result = @lesson.results.build
       @result.word = words[n]
-      @results << @result
     end
   end
 
@@ -38,7 +36,7 @@ class LessonsController < ApplicationController
 
   private
   def lesson_params
-    params.require(:lesson).permit :correct_answers, results_attributes: [:id, :word_id, :answer_id]
+    params.require(:lesson).permit results_attributes: [:id, :word_id, :answer_id]
   end
 end
 

@@ -13,6 +13,7 @@ class Admin::WordsController < Admin::AdminsController
   def update
     @category = Category.find params[:category_id]
     @word = Word.find params[:id]
+    debugger
     if @word.update_attributes word_params
       flash[:success] = "Word updated"
       redirect_to admin_category_url @category

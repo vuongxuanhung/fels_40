@@ -17,9 +17,9 @@
     </div>
     <div class="next">
       <% if f.options[:child_index] < 19 %>
-        <%= button_tag "", type: "button", class:"btn btn-primary glyphicon glyphicon-arrow-right", onclick: "next_word(#{f.options[:child_index]})", title: "Next" %>
+        <%= button_tag "", type: "button", class:"btn btn-primary glyphicon glyphicon-arrow-right next-button", data: {index: f.options[:child_index]}, title: "Next" %>
       <% elsif f.options[:child_index] == 19 %>
-        <%= button_tag "", class:"btn btn-primary glyphicon glyphicon-arrow-right", onclick: "next_word(#{f.options[:child_index]})", title: "Next" %>
+        <%= button_tag "", class:"btn btn-primary glyphicon glyphicon-arrow-right next-button", data: {index: f.options[:child_index]}, title: "Next" %>
       <% end %>
     </div>
   </div>
