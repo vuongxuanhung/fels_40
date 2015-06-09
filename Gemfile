@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 
+gem 'heroku'
+
 gem 'bootstrap-sass'
 gem 'bcrypt'
 gem 'faker'
@@ -15,6 +17,8 @@ gem 'prawn'
 gem 'friendly_id'
 gem 'ransack'
 gem 'lol_dba'
+gem 'cancancan'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets

@@ -6,7 +6,6 @@
         <li><%= link_to "Home", admin_root_path %></li>
         <% if logged_in? %>
           <li><%= link_to "Users", admin_users_path %></li>
-          <% if current_user.admin? %>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 Categories <b class="caret"></b>
@@ -16,7 +15,6 @@
                 <li><%= link_to "List", admin_categories_path %></li>
               </ul>
             </li>
-          <% end %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Account <b class="caret"></b>
